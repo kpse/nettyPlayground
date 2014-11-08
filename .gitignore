@@ -1,2 +1,6 @@
 .idea
 .gradle/
+location2.iml
+*.ipr
+*.iws
+
