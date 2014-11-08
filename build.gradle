@@ -4,7 +4,7 @@ repositories {
     mavenCentral()
 }
 allprojects {
-    apply plugin: 'java'
+    apply plugin: 'scala'
     apply plugin: 'idea'
     apply plugin: 'maven'
 }
@@ -30,7 +30,6 @@ idea {
 }
 
 project.ext {
-    guavaVersion = '18.0'
     nettyVersion = '4.0.24.Final'
     slf4jVersion = '1.7.7'
     commonsIoVersion = '2.4'
@@ -45,8 +44,8 @@ project.ext {
 
 dependencies {
     compile (
-            "com.google.guava:guava:$guavaVersion",
             "io.netty:netty-codec-http:$nettyVersion",
+            'org.scala-lang:scala-library:2.10.3',
     )
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
