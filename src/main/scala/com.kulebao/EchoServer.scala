@@ -1,4 +1,5 @@
-import com.kulebao.EchoServerHandler2
+package com.kulebao
+
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel._
@@ -8,7 +9,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel
 
 object Server {
   val PORT = System.getProperty("port", "8007").toInt;
-  def main(args: Array[String]) {
+
+  def main(args: Array[String]): Unit = {
     val bossGroup: EventLoopGroup = new NioEventLoopGroup(1)
     val workerGroup: EventLoopGroup = new NioEventLoopGroup
     try {
