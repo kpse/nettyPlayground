@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel
 
 
 object Server {
-  val PORT = System.getProperty("port", "7755").toInt;
+  val PORT = System.getProperty("port", "7755").toInt
 
   def main(args: Array[String]): Unit = {
     val bossGroup: EventLoopGroup = new NioEventLoopGroup(1)
@@ -19,7 +19,8 @@ object Server {
         .option[Integer](ChannelOption.SO_BACKLOG, 100).childHandler(new ChannelInitializer[SocketChannel] {
         def initChannel(ch: SocketChannel) {
           val p: ChannelPipeline = ch.pipeline
-          p.addLast(new EchoServerHandler2)
+//          p.addLast(new EchoServerHandler2)
+          p.addLast(new SimpleServerHandler)
         }
       })
 
