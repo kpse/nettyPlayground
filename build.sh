@@ -1,5 +1,11 @@
+#!/bin/sh
+
 function build_local {
   gradle test
+}
+
+function build_and_push {
+  git pull && build_local && git push
 }
 
 function deploy_prod {
@@ -24,6 +30,7 @@ function deploy_prod {
 function main {
   	case $1 in
 		d) deploy_prod stage.cocobabys.com ;;
+		p) build_and_push ;;
 		*) build_local ;;
 	esac
 }
