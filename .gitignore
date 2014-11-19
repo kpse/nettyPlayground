@@ -1,6 +1,6 @@
 .idea
 .gradle/
-location2.iml
+*.iml
 *.ipr
 *.iws
 build/

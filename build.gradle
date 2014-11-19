@@ -8,7 +8,7 @@ allprojects {
     apply plugin: 'scala'
     apply plugin: 'idea'
     apply plugin: 'maven'
-    apply plugin:'application'
+    apply plugin: 'application'
 }
 
 idea {

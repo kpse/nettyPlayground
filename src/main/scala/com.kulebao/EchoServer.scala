@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel
 
 
 object Server {
-  val PORT = System.getProperty("port", "8007").toInt;
+  val PORT = System.getProperty("port", "7755").toInt;
 
   def main(args: Array[String]): Unit = {
     val bossGroup: EventLoopGroup = new NioEventLoopGroup(1)
