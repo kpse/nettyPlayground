@@ -68,5 +68,14 @@ project.dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
+applicationDefaultJvmArgs = ["-Dlogback.configurationFile=../conf/logback.xml"]
+
+task createConf {
+    outputs.dir file("logback.xml")
+}
+
+applicationDistribution.from(createConf) {
+    into "conf"
+}
 
 mainClassName = 'com.kulebao.Server'
