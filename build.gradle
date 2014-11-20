@@ -70,7 +70,7 @@ project.dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-applicationDefaultJvmArgs = ["-Dlogback.configurationFile=../conf/logback.xml"]
+applicationDefaultJvmArgs = ["-Dlogback.configurationFile=/var/location/current/conf/logback.xml"]
 
 task createConf {
     outputs.dir file("logback.xml")
