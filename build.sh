@@ -27,10 +27,14 @@ function deploy_prod {
     echo "Done deployment $1"
 }
 
+function push_and_deploy {
+    build_and_push && deploy_prod stage.cocobabys.com
+}
 function main {
   	case $1 in
 		d) deploy_prod stage.cocobabys.com ;;
 		p) build_and_push ;;
+		a) push_and_deploy ;;
 		*) build_local ;;
 	esac
 }
