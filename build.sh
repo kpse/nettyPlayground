@@ -1,7 +1,7 @@
 #!/bin/sh
 
 function build_local {
-  gradle test
+  gradle clean test
 }
 
 function build_and_push {
@@ -28,11 +28,16 @@ function deploy_prod {
 }
 
 function push_and_deploy {
-    build_and_push && deploy_prod stage.cocobabys.com
+    build_and_push && deploy
 }
+
+function deploy {
+    gradle clean distZip && deploy_prod stage.cocobabys.com
+}
+
 function main {
   	case $1 in
-		d) deploy_prod stage.cocobabys.com ;;
+		d) deploy ;;
 		p) build_and_push ;;
 		a) push_and_deploy ;;
 		*) build_local ;;
