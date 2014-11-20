@@ -5,3 +5,5 @@
 *.iws
 build/
 .DS_Store
+logs/
+out/
