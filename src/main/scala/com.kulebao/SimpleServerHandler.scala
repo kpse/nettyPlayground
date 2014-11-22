@@ -18,19 +18,24 @@ class SimpleServerHandler extends ChannelInboundHandlerAdapter {
 
     val input: String = local.toString(Charset.defaultCharset())
     logger.debug(s"receive: $input")
+    local.release()
 
+    val output: String = reply(input)
+
+    logger.debug(s"reply: $output")
+    val byteBuffer = copiedBuffer(output, Charset.defaultCharset())
+    buf.writeBytes(byteBuffer)
+
+    ctx.write(buf)
+  }
+
+  def reply(input: String): String = {
     val prefix = input.split(",").take(2).mkString(",")
 
     val time: DateTime = DateTime.now()
     val formattedTime = time.toString("HHmmss")
 
-    val output: String = s"$prefix,D1,$formattedTime,5,1#"
-
-    logger.debug(s"reply: $output")
-    val byteBuffer = copiedBuffer(output, Charset.defaultCharset())
-    buf.writeBytes(byteBuffer)
-    local.release()
-    ctx.write(buf)
+    s"$prefix,D1,$formattedTime,5,1#"
   }
 
   override def channelReadComplete(ctx: ChannelHandlerContext) = {

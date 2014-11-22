@@ -19,7 +19,6 @@ object Server {
         .option[Integer](ChannelOption.SO_BACKLOG, 100).childHandler(new ChannelInitializer[SocketChannel] {
         def initChannel(ch: SocketChannel) {
           val p: ChannelPipeline = ch.pipeline
-//          p.addLast(new EchoServerHandler2)
           p.addLast(new SimpleServerHandler)
         }
       })
